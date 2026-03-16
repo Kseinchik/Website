@@ -829,6 +829,16 @@ h1 span {
   min-height: 100%;
   display: block;
   text-decoration: none;
+  cursor: pointer;
+  transform-origin: center;
+  will-change: transform;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+#my-approach .approach-card:hover,
+#my-approach .approach-card:focus-visible {
+  transform: scale(1.04);
+  box-shadow: 0 10px 26px rgba(8, 27, 46, 0.22);
 }
 
 .approach-card-ar {
