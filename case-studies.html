@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Case Studies | Ksenia Efimova</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-bg"></div>
+    <header class="site-header">
+      <a class="brand" href="./index.html" aria-label="Go to home">KE</a>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./case-studies.html">Case Studies</a></li>
+          <li><a href="./ai-lab.html">AI Lab</a></li>
+          <li><a href="./hobby.html">Interests</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section-frame case-studies-hero">
+        <div>
+          <p class="kicker">Case Studies</p>
+          <h1>
+            Strategy made visible.
+          </h1>
+        </div>
+        <p class="case-studies-intro">
+          A deep dive into my professional journey. Here, I outline the complex tasks I've navigated and
+          the outcomes I’ve achieved. From leadership to collective breakthroughs, these case studies
+          reflect my commitment to constant learning and high-impact work.
+        </p>
+      </section>
+
+      <section class="section-frame case-studies-board">
+        <div class="case-studies-grid">
+          <article class="case-study-item">
+            <button class="case-study-teaser case-study-teaser-ar" type="button" data-case-study="bpo" aria-expanded="false">
+              <span class="case-study-teaser-copy">
+                <span class="case-study-teaser-title">From Standard BPO to a Digital Leader</span>
+                <span class="case-study-teaser-text">
+                  Led an Analyst Relations function for a global BPO (100K+ employees), transforming analyst perception from "standard outsourcing" to "innovative digital provider" through targeted audits, SME coaching, and tactics on advanced tech topics. Over 12 months, achieved 7× analyst engagement, 3× coverage growth, and +31% message clarity while driving digital services revenue. <strong>Click to learn more.</strong>
+                </span>
+              </span>
+            </button>
+          </article>
+
+          <article class="case-study-item">
+            <button class="case-study-teaser case-study-teaser-pmm" type="button" data-case-study="zoner" aria-expanded="false">
+              <span class="case-study-teaser-copy">
+                <span class="case-study-teaser-title">Positioning of Zoner Photo Studio on CIS market</span>
+                <span class="case-study-teaser-text">
+                  Developed a market strategy for Zoner Photo Studio to penetrate Russia's market overcoming 70% piracy rates, low brand awareness, and significant competition. Conducted PEST analysis, perception mapping, and focus groups to craft a 3-stage roadmap delivering a profitable 1.12–1.13 revenue-to-cost ratio. Achieved 8% market growth in 4 months and 10x download surge. <strong>Click to learn more.</strong>
+                </span>
+              </span>
+            </button>
+          </article>
+        </div>
+
+        <div class="case-study-detail-stage is-hidden" id="case-study-detail-stage" hidden>
+          <div class="case-study-detail" id="case-study-detail-panel" aria-live="polite"></div>
+        </div>
+
+        <template data-case-study-detail="bpo">
+          <section class="case-study-detail-block case-study-detail-block-wide case-study-detail-prose case-study-theme-ar">
+            <h2>Challenge to solve</h2>
+            <p>
+              A global BPO provider with over 100,000 employees offered a broad portfolio of services
+              supported by third‑party software and its own proprietary layer. Despite strong capabilities,
+              the company was primarily perceived by industry analysts as a “standard BPO” focused on
+              traditional outsourcing rather than as an innovative, digital‑first provider.
+            </p>
+            <p>
+              As a lead for Analyst Relations reporting to the CMO, I was tasked with building the AR
+              function and shifting analyst perception toward an innovative, digital-first provider.
+            </p>
+          </section>
+
+          <div class="case-study-detail-columns">
+            <section class="case-study-detail-block case-study-detail-prose case-study-theme-ar">
+              <h2>My approach</h2>
+              <ul>
+                <li>Identified and prioritized high‑impact analysts and coverage areas across multiple services, regional markets and software domains.</li>
+                <li>Conducted an initial perception audit to assess current positioning and analyst sentiment.</li>
+                <li>In partnership with subject matter experts, Comms and Marketing developed targeted engagement tactics covering various themes such as the Metaverse, Agentic AI, Process Automation among others</li>
+                <li>Trained internal experts on effective analyst communication: how to emphasize differentiators, address challenging questions, and tailor insights for diverse analyst agendas.</li>
+                <li>Organized and led multiple analyst briefing rounds with tailored messaging for each analyst group.</li>
+                <li>Performed a follow‑up audit after 12 months to quantify progress in perception and engagement maturity.</li>
+              </ul>
+            </section>
+
+            <section class="case-study-detail-block case-study-detail-prose case-study-theme-ar">
+              <h2>Result</h2>
+              <ul>
+                <li>7× increase in analyst engagement and 3× growth in published analyst coverage.</li>
+                <li>+31% improvement in message clarity compared to initial benchmarks.</li>
+                <li>Company reclassified from “standard BPO” to “innovative digital provider” by major analyst firms.</li>
+                <li>Contributed to an overall increase in digital services revenue and stronger analyst relationships supporting long‑term brand momentum.</li>
+              </ul>
+            </section>
+          </div>
+        </template>
+
+        <template data-case-study-detail="zoner">
+          <section class="case-study-detail-block case-study-detail-block-wide case-study-detail-prose case-study-theme-pmm">
+            <h2>Challenge to solve</h2>
+            <p>
+              The Czech company ZONER software s.r.o. sought to expand its flagship product, Zoner Photo
+              Studio (ZPS), into the Russian market. The Russian software market was characterized by high
+              growth potential but presented significant barriers:
+            </p>
+            <ul>
+              <li>Intense Competition: Presence of established giants like Adobe (Photoshop), ACDSee, and Corel, as well as rising free alternatives like Google Picasa.</li>
+              <li>High Piracy: Over 70% of software used in Russia was unlicensed, making it difficult to sell paid versions to individual consumers.</li>
+              <li>Low Brand Awareness: ZPS was a newcomer with virtually zero recognition among Russian users compared to its competitors.</li>
+            </ul>
+
+            <h2>Task</h2>
+            <p>
+              The objective was to develop a comprehensive product positioning strategy that would allow ZPS
+              to carve out a niche in the Russian market, differentiate itself from competitors, and ensure
+              a profitable entry through its distributor, ZAO "CPS".
+            </p>
+            <ol>
+              <li>Analyze the Russian IT landscape and consumer preferences.</li>
+              <li>Identify the most promising market segments.</li>
+              <li>Formulate a unique positioning statement and a marketing implementation plan.</li>
+              <li>Assess the economic feasibility of the strategy.</li>
+            </ol>
+          </section>
+
+          <div class="case-study-detail-columns">
+            <section class="case-study-detail-block case-study-detail-prose case-study-theme-pmm">
+              <h2>My approach</h2>
+              <ul>
+                <li>Market Research &amp; Segmentation: Conducted PEST analysis, focus groups, and expert interviews. The market was segmented into two target groups: Amateur Photographers (valuing ease of use and price) and Professional/Advanced Amateurs (valuing functionality and format support).</li>
+                <li>Competitive Analysis: Used tools like Perception Maps (comparing "Design" vs. "Technology") and Multi-attribute Models to benchmark ZPS against Adobe and ACDSee. Research revealed that while Adobe led in functions, it was too complex and expensive for many; ZPS occupied a "sweet spot" of being more functional than free tools but easier/cheaper than professional ones.</li>
+                <li>Strategic Positioning: Defined the core positioning concept as "Functional Simplicity" (Russian slogan: "Простота. Функциональность. Результат"). The product was positioned as a "pre-program" before moving to complex tools like Photoshop.</li>
+                <li>Implementation Roadmap: Developed a 3-stage plan:
+                  <ol>
+                    <li>Awareness: Launching a dedicated Russian website, press releases in major IT magazines (Chip, iXBT), and banner advertising.</li>
+                    <li>Education: Creating video tutorials, hosting "Soft-Marathons," and photography contests to build user loyalty.</li>
+                    <li>B2B Expansion: Targeting government and educational institutions through multi-licensing seminars and exhibitions.</li>
+                  </ol>
+                </li>
+              </ul>
+            </section>
+
+            <section class="case-study-detail-block case-study-detail-prose case-study-theme-pmm">
+              <h2>Result</h2>
+              <ul>
+                <li>Clear Market Identity: A distinct niche was identified for ZPS as a high-performance yet accessible alternative to Adobe Photoshop, specifically targeting users who needed more than basic editing but weren't ready for professional-grade complexity.</li>
+                <li>Economic Viability: The projected efficiency analysis estimated a revenue-to-cost ratio of 1.12–1.13 within the first six months, indicating that the marketing investment would be profitable.</li>
+                <li>Strategic Roadmap: The distributor (CPS) was provided with a turnkey strategy including a budget, specific advertising channels, and a content plan to ensure a structured market entry.</li>
+                <li>Overall Market Growth: 8% growth within 4 moth after strategy implementation and 10x growth to initial product download</li>
+              </ul>
+            </section>
+          </div>
+        </template>
+      </section>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Lab | Ksenia Efimova</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-bg"></div>
+    <header class="site-header">
+      <a class="brand" href="./index.html" aria-label="Go to home">KE</a>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./case-studies.html">Case Studies</a></li>
+          <li><a href="./ai-lab.html">AI Lab</a></li>
+          <li><a href="./hobby.html">Interests</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section-frame ai-lab-hero">
+        <div>
+          <p class="kicker">AI Lab</p>
+          <h1>
+            <span class="ai-lab-title-lead">Applied experiments:</span>
+            <span>strategic tools, visual worlds, and speculative systems.</span>
+          </h1>
+        </div>
+        <p class="ai-lab-intro">
+          This section brings together working prototypes and creative experiments. Scroll through the
+          vertical rail, then click a card to flip it and load the corresponding project brief.
+        </p>
+      </section>
+
+      <section class="section-frame ai-lab-board" id="ai-lab-board">
+        <div class="ai-lab-grid">
+          <div class="ai-lab-column">
+            <button
+              class="ai-lab-card"
+              type="button"
+              data-ai-lab-card
+              data-key="ar"
+              aria-pressed="false"
+              aria-controls="ai-lab-detail"
+            >
+              <span class="ai-lab-card-inner">
+                <span class="ai-lab-card-face ai-lab-card-front">
+                  <span class="ai-lab-image-shell">
+                    <img src="./ai-lab-ar-maturity-tool.png" alt="Analyst Relations Maturity Assessment tool preview" />
+                  </span>
+                  <span class="ai-lab-card-title">Analyst Relations Maturity Assessment</span>
+                </span>
+                <span class="ai-lab-card-face ai-lab-card-back ai-lab-card-back-ar">
+                  <span class="ai-lab-card-glyph"></span>
+                  <span class="ai-lab-card-back-label">Tool brief</span>
+                </span>
+              </span>
+            </button>
+
+            <article class="ai-lab-detail" id="ai-lab-detail" aria-live="polite">
+              <div class="ai-lab-detail-meta">
+                <p class="kicker" id="ai-lab-detail-kicker">AI Lab project</p>
+                <p class="ai-lab-detail-status" id="ai-lab-detail-status">Waiting to be published</p>
+              </div>
+              <h2 id="ai-lab-detail-title">Analyst Relations Maturity Assessment</h2>
+              <p id="ai-lab-detail-body">
+                This simple tool allows any company to evaluate its maturity when it comes to the analyst
+                relations function. It provides current-level visibility together with recommendations for
+                moving to the next stage of maturity.
+              </p>
+            </article>
+
+            <button
+              class="ai-lab-card"
+              type="button"
+              data-ai-lab-card
+              data-key="dystopian"
+              aria-pressed="false"
+              aria-controls="ai-lab-detail"
+            >
+              <span class="ai-lab-card-inner">
+                <span class="ai-lab-card-face ai-lab-card-front">
+                  <span class="ai-lab-image-shell">
+                    <img src="./ai-lab-dystopian-ai.png" alt="Dystopian AI World visual" />
+                  </span>
+                  <span class="ai-lab-card-title">Dystopian AI World</span>
+                </span>
+                <span class="ai-lab-card-face ai-lab-card-back ai-lab-card-back-dystopian">
+                  <span class="ai-lab-card-glyph"></span>
+                  <span class="ai-lab-card-back-label">Scenario brief</span>
+                </span>
+              </span>
+            </button>
+          </div>
+
+          <div class="ai-lab-rail" aria-hidden="true">
+            <span class="ai-lab-rail-line"></span>
+            <span class="ai-lab-rail-orb" id="ai-lab-rail-orb"></span>
+          </div>
+
+          <div class="ai-lab-column">
+            <button
+              class="ai-lab-card"
+              type="button"
+              data-ai-lab-card
+              data-key="competition"
+              aria-pressed="false"
+              aria-controls="ai-lab-detail"
+            >
+              <span class="ai-lab-card-inner">
+                <span class="ai-lab-card-face ai-lab-card-front">
+                  <span class="ai-lab-image-shell">
+                    <img src="./ai-lab-competition-analysis.png" alt="Competition Analysis interface preview" />
+                  </span>
+                  <span class="ai-lab-card-title">Competition Analysis</span>
+                </span>
+                <span class="ai-lab-card-face ai-lab-card-back ai-lab-card-back-competition">
+                  <span class="ai-lab-card-glyph"></span>
+                  <span class="ai-lab-card-back-label">System brief</span>
+                </span>
+              </span>
+            </button>
+
+            <button
+              class="ai-lab-card"
+              type="button"
+              data-ai-lab-card
+              data-key="creative"
+              aria-pressed="false"
+              aria-controls="ai-lab-detail"
+            >
+              <span class="ai-lab-card-inner">
+                <span class="ai-lab-card-face ai-lab-card-front">
+                  <span class="ai-lab-image-shell">
+                    <img src="./ai-lab-creative-ai.png" alt="Creative AI artwork preview" />
+                  </span>
+                  <span class="ai-lab-card-title">Creative AI</span>
+                </span>
+                <span class="ai-lab-card-face ai-lab-card-back ai-lab-card-back-creative">
+                  <span class="ai-lab-card-glyph"></span>
+                  <span class="ai-lab-card-back-label">Creative brief</span>
+                </span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
