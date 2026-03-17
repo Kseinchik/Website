@@ -53,17 +53,45 @@ body {
 }
 
 .brand {
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
   border-radius: 999px;
-  border: 2px solid var(--text);
-  display: grid;
-  place-items: center;
-  color: var(--text);
+  border: 2px solid rgba(244, 247, 252, 0.82);
+  display: block;
+  overflow: hidden;
   text-decoration: none;
-  font-family: "Space Grotesk", sans-serif;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  position: relative;
+  background:
+    radial-gradient(circle at 30% 24%, rgba(214, 168, 46, 0.4), transparent 32%),
+    linear-gradient(145deg, rgba(76, 115, 158, 0.65), rgba(16, 40, 68, 0.94));
+  box-shadow: 0 8px 20px rgba(6, 15, 27, 0.22);
+}
+
+.brand::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(14, 33, 56, 0.08), rgba(16, 40, 68, 0.18)),
+    radial-gradient(circle at 76% 18%, rgba(214, 168, 46, 0.16), transparent 32%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.brand img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center 22%;
+  filter: saturate(0.86) contrast(1.02) brightness(0.98);
+  transform: scale(1.12);
+}
+
+.brand:hover,
+.brand:focus-visible {
+  border-color: var(--gold);
+  box-shadow: 0 10px 24px rgba(6, 15, 27, 0.26);
 }
 
 .nav-list {
@@ -1248,6 +1276,17 @@ h1 span {
   transform: translate(-50%, 0);
   box-shadow: 0 10px 24px rgba(9, 21, 37, 0.22);
   transition: transform 120ms linear;
+  cursor: grab;
+  touch-action: none;
+}
+
+.ai-lab-rail-orb:active {
+  cursor: grabbing;
+}
+
+.ai-lab-rail-orb:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 4px;
 }
 
 .ai-lab-detail {
@@ -1567,6 +1606,73 @@ h1 span {
   padding-left: 0.9rem;
 }
 
+.contact-chooser {
+  position: relative;
+}
+
+.contact-trigger {
+  min-width: 164px;
+}
+
+.contact-menu {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 0.85rem);
+  width: min(320px, calc(100vw - 2rem));
+  padding: 1rem;
+  border: 1px solid rgba(214, 168, 46, 0.34);
+  border-radius: 1rem;
+  background: rgba(12, 30, 50, 0.96);
+  box-shadow: 0 18px 36px rgba(6, 15, 27, 0.34);
+  display: grid;
+  gap: 0.65rem;
+}
+
+.contact-menu[hidden] {
+  display: none;
+}
+
+.contact-menu-title {
+  margin: 0 0 0.1rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+  padding-left: 0;
+}
+
+.contact-option {
+  width: 100%;
+  border: 1px solid rgba(76, 115, 158, 0.5);
+  border-radius: 0.9rem;
+  background: rgba(23, 54, 87, 0.92);
+  color: var(--text);
+  text-decoration: none;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  padding: 0.85rem 0.95rem;
+  text-align: left;
+  transition: border-color 140ms ease, transform 140ms ease, background 140ms ease;
+}
+
+.contact-option-copy {
+  cursor: pointer;
+}
+
+.contact-option:hover,
+.contact-option:focus-visible {
+  border-color: var(--gold);
+  background: rgba(28, 64, 101, 0.98);
+  transform: translateY(-1px);
+}
+
+.contact-copy-feedback {
+  min-height: 1.2rem;
+  margin: 0;
+  color: var(--gold);
+  font-size: 0.84rem;
+  padding-left: 0;
+}
+
 @media (max-width: 1024px) {
   .cycle-motion {
     max-width: 460px;
@@ -1754,6 +1860,11 @@ h1 span {
 
   .site-footer p {
     padding-left: 0;
+  }
+
+  .contact-menu {
+    position: static;
+    width: min(340px, 100%);
   }
 }
 

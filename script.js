@@ -69,7 +69,7 @@ function initMindsetSection() {
         'ENTJ-A: Assertive Commander <a class="mindset-footnote" href="https://www.16personalities.com/" target="_blank" rel="noopener noreferrer">[1]</a>',
       description:
         "Commanders are bold, imaginative, and strong-willed, always finding a way - or making one. These decisive types love momentum and accomplishment, often acting on their creative visions. People with this type bring a lot of desirable skills to the table, including excellent leadership and communication skills, a hard-working attitude, and an ability to plan for the future.",
-      detailHtml: "<strong>Weakness:</strong> Impatience, Bluntness, Overcommitment, Overconfidence",
+      detailHtml: "",
     },
     pmm: {
       title: "Vision and launch execution.",
@@ -357,6 +357,8 @@ function initAiLabSection() {
   };
 
   let activeKey = "";
+  let draggingPointerId = null;
+  let ticking = false;
 
   function clearActiveCard() {
     cards.forEach((card) => {
@@ -406,28 +408,45 @@ function initAiLabSection() {
     });
   });
 
-  let ticking = false;
+  function getScrollMetrics() {
+    const scrollRoot = document.documentElement;
+    const maxScroll = Math.max(scrollRoot.scrollHeight - window.innerHeight, 0);
+    return {
+      scrollTop: window.scrollY || scrollRoot.scrollTop || 0,
+      maxScroll,
+    };
+  }
+
+  function getOrbMaxY() {
+    return Math.max(railEl.clientHeight - orbEl.offsetHeight, 0);
+  }
+
+  function setOrbFromRatio(ratio) {
+    const boundedRatio = Math.min(Math.max(ratio, 0), 1);
+    const translateY = getOrbMaxY() * boundedRatio;
+    orbEl.style.transform = `translate(-50%, ${translateY}px)`;
+    orbEl.setAttribute("aria-valuenow", String(Math.round(boundedRatio * 100)));
+  }
+
+  function setScrollFromClientY(clientY) {
+    const railRect = railEl.getBoundingClientRect();
+    const orbOffset = orbEl.offsetHeight / 2;
+    const localY = clientY - railRect.top - orbOffset;
+    const maxY = getOrbMaxY();
+    const ratio = maxY > 0 ? Math.min(Math.max(localY, 0), maxY) / maxY : 0;
+    const { maxScroll } = getScrollMetrics();
+
+    setOrbFromRatio(ratio);
+    window.scrollTo({ top: maxScroll * ratio, behavior: "auto" });
+  }
 
   function updateOrbPosition() {
     ticking = false;
+    if (draggingPointerId !== null) return;
 
-    const railRect = railEl.getBoundingClientRect();
-    const cardRects = Array.from(cards).map((card) => card.getBoundingClientRect());
-    const viewportHeight = window.innerHeight || 1;
-    const viewportCenter = viewportHeight / 2;
-    const topRowCenter =
-      (cardRects[0].top + cardRects[0].height / 2 + cardRects[2].top + cardRects[2].height / 2) / 2;
-    const bottomRowCenter =
-      (cardRects[1].top + cardRects[1].height / 2 + cardRects[3].top + cardRects[3].height / 2) / 2;
-    const startY = topRowCenter - railRect.top - orbEl.offsetHeight / 2;
-    const endY = bottomRowCenter - railRect.top - orbEl.offsetHeight / 2;
-    const topDistance = Math.abs(viewportCenter - topRowCenter);
-    const bottomDistance = Math.abs(viewportCenter - bottomRowCenter);
-    const translateY = bottomDistance < topDistance ? endY : startY;
-
-    const boundedY = Math.min(Math.max(translateY, 0), Math.max(railRect.height - orbEl.offsetHeight, 0));
-
-    orbEl.style.transform = `translate(-50%, ${boundedY}px)`;
+    const { scrollTop, maxScroll } = getScrollMetrics();
+    const ratio = maxScroll > 0 ? scrollTop / maxScroll : 0;
+    setOrbFromRatio(ratio);
   }
 
   function requestOrbUpdate() {
@@ -435,6 +454,57 @@ function initAiLabSection() {
     ticking = true;
     window.requestAnimationFrame(updateOrbPosition);
   }
+
+  orbEl.addEventListener("pointerdown", (event) => {
+    draggingPointerId = event.pointerId;
+    orbEl.setPointerCapture(event.pointerId);
+    orbEl.style.transition = "none";
+    document.body.style.userSelect = "none";
+    setScrollFromClientY(event.clientY);
+  });
+
+  orbEl.addEventListener("pointermove", (event) => {
+    if (draggingPointerId !== event.pointerId) return;
+    setScrollFromClientY(event.clientY);
+  });
+
+  function stopDragging(event) {
+    if (draggingPointerId !== event.pointerId) return;
+    draggingPointerId = null;
+    orbEl.style.transition = "";
+    document.body.style.userSelect = "";
+    if (orbEl.hasPointerCapture(event.pointerId)) {
+      orbEl.releasePointerCapture(event.pointerId);
+    }
+    requestOrbUpdate();
+  }
+
+  orbEl.addEventListener("pointerup", stopDragging);
+  orbEl.addEventListener("pointercancel", stopDragging);
+
+  orbEl.addEventListener("keydown", (event) => {
+    const { scrollTop, maxScroll } = getScrollMetrics();
+    const step = Math.max(window.innerHeight * 0.18, 120);
+    let nextScrollTop = scrollTop;
+
+    if (event.key === "ArrowDown" || event.key === "PageDown") {
+      nextScrollTop += step;
+    } else if (event.key === "ArrowUp" || event.key === "PageUp") {
+      nextScrollTop -= step;
+    } else if (event.key === "Home") {
+      nextScrollTop = 0;
+    } else if (event.key === "End") {
+      nextScrollTop = maxScroll;
+    } else {
+      return;
+    }
+
+    event.preventDefault();
+    window.scrollTo({
+      top: Math.min(Math.max(nextScrollTop, 0), maxScroll),
+      behavior: "smooth",
+    });
+  });
 
   window.addEventListener("scroll", requestOrbUpdate, { passive: true });
   window.addEventListener("resize", requestOrbUpdate);
@@ -444,6 +514,67 @@ function initAiLabSection() {
 }
 
 initAiLabSection();
+
+function initContactChooser() {
+  const chooserEl = document.querySelector("[data-contact-chooser]");
+  if (!chooserEl) return;
+
+  const triggerEl = chooserEl.querySelector(".contact-trigger");
+  const menuEl = chooserEl.querySelector(".contact-menu");
+  const optionEls = chooserEl.querySelectorAll("[data-contact-option]");
+  const copyButtonEl = chooserEl.querySelector("[data-copy-email]");
+  const feedbackEl = chooserEl.querySelector("[data-contact-feedback]");
+
+  if (!triggerEl || !menuEl || !copyButtonEl || !feedbackEl) return;
+
+  function setOpen(isOpen, options = {}) {
+    const shouldResetFeedback = options.resetFeedback === true;
+    triggerEl.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    menuEl.hidden = !isOpen;
+
+    if (shouldResetFeedback) {
+      feedbackEl.textContent = "";
+    }
+  }
+
+  triggerEl.addEventListener("click", () => {
+    const isOpen = triggerEl.getAttribute("aria-expanded") === "true";
+    setOpen(!isOpen, { resetFeedback: !isOpen });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (chooserEl.contains(event.target)) return;
+    setOpen(false);
+  });
+
+  chooserEl.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    setOpen(false);
+    triggerEl.focus();
+  });
+
+  optionEls.forEach((optionEl) => {
+    optionEl.addEventListener("click", () => {
+      setOpen(false);
+    });
+  });
+
+  copyButtonEl.addEventListener("click", async () => {
+    const email = String(copyButtonEl.dataset.email || "");
+    if (!email) return;
+
+    try {
+      await navigator.clipboard.writeText(email);
+      feedbackEl.textContent = "Email address copied.";
+    } catch (error) {
+      feedbackEl.textContent = email;
+    }
+
+    setOpen(true);
+  });
+}
+
+initContactChooser();
 
 function initCaseStudiesSection() {
   const triggers = document.querySelectorAll("[data-case-study]");

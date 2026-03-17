@@ -19,7 +19,9 @@
   <body>
     <div class="page-bg"></div>
     <header class="site-header">
-      <a class="brand" href="#home" aria-label="Go to home">KE</a>
+      <a class="brand" href="#home" aria-label="Go to home">
+        <img src="./Header.png" alt="Ksenia Efimova portrait" />
+      </a>
       <nav>
         <ul class="nav-list">
           <li><a href="#home">Home</a></li>
@@ -96,7 +98,7 @@
 
       <section class="section-frame section-two-col" id="circle">
         <div class="cycle-image-panel">
-          <p class="kicker">START ANALYSIS, <span class="kicker-lower">and</span><br/>MAKE ME HAPPY</p>
+          <p class="kicker">TURN INSIGHT INTO GROWTH</p>
           <p class="cycle-image-hint">Click on Market Intelligence button on the right</p>
           <figure class="cycle-image-frame">
             <img id="cycle-stage-image" class="cycle-stage-image" src="./1.png" alt="Cycle stage 1" />
@@ -189,7 +191,7 @@
             </div>
 
             <div class="compare-column">
-              <h3 class="compare-head is-alt">My Versatility</h3>
+              <h3 class="compare-head is-alt">Your ROI on Me</h3>
               <button class="compare-cell" type="button" aria-expanded="false">
                 <span class="compare-title">Unified Vision</span>
                 <span class="compare-detail">
@@ -237,9 +239,7 @@
             <p id="mindset-description">
               Commanders are bold, imaginative, and strong-willed, always finding a way - or making one. These decisive types love momentum and accomplishment, often acting on their creative visions. People with this type bring a lot of desirable skills to the table, including excellent leadership and communication skills, a hard-working attitude, and an ability to plan for the future.
             </p>
-            <p id="mindset-achievement">
-              <strong>Weakness:</strong> Impatience, Bluntness, Overcommitment, Overconfidence
-            </p>
+            <p id="mindset-achievement"></p>
           </article>
         </div>
 
@@ -289,7 +289,53 @@
 
     <footer class="site-footer" id="contact">
       <p>Lets build market-winning stories from complex signals.</p>
-      <a class="btn btn-primary" href="mailto:kv_efimova@outlook.com">Contact</a>
+      <div class="contact-chooser" data-contact-chooser>
+        <button
+          class="btn btn-primary contact-trigger"
+          type="button"
+          aria-expanded="false"
+          aria-controls="contact-options"
+        >
+          Contact
+        </button>
+        <div class="contact-menu" id="contact-options" hidden>
+          <p class="contact-menu-title">Choose how to contact me</p>
+          <a
+            class="contact-option"
+            href="mailto:kv_efimova@outlook.com?subject=Website%20Inquiry"
+            data-contact-option
+          >
+            Use default email app
+          </a>
+          <a
+            class="contact-option"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=kv_efimova@outlook.com&su=Website%20Inquiry"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-contact-option
+          >
+            Open Gmail in browser
+          </a>
+          <a
+            class="contact-option"
+            href="https://outlook.office.com/mail/deeplink/compose?to=kv_efimova@outlook.com&subject=Website%20Inquiry"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-contact-option
+          >
+            Open Outlook in browser
+          </a>
+          <button
+            class="contact-option contact-option-copy"
+            type="button"
+            data-copy-email
+            data-email="kv_efimova@outlook.com"
+          >
+            Copy email address
+          </button>
+          <p class="contact-copy-feedback" data-contact-feedback aria-live="polite"></p>
+        </div>
+      </div>
     </footer>
 
     <script src="./script.js"></script>
